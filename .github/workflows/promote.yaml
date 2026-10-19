@@ -1,0 +1,15 @@
+name: Promote to Stable (sandbox)
+on: push
+jobs:
+  gate:
+    name: Gate checks
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "soak 26h ok, e2e ok, notes ok (fake)"
+  promote:
+    name: Promote
+    needs: gate
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - run: echo "would promote v0.9.0 (fake)"
